@@ -6,7 +6,7 @@ module.exports = function (sequilize, DataTypes) {
         }
     });
 
-    activeChores.associate = function(models) {
+    activeChores.associate = function (models) {
         activeChores.belongsTo(models.chore_approval, {
             foreignKey: {
                 allowNull: false
@@ -25,4 +25,4 @@ module.exports = function (sequilize, DataTypes) {
     };
 
     return activeChores;
-}
+};
