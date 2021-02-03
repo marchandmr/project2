@@ -1,5 +1,5 @@
 module.exports = function(sequilize, DataTypes) {
-    var prizes = sequile.define("prizes", {
+    var prizes = sequilize.define("prizes", {
         prizeName: {
             type: DataTypes.STRING,
             allowNull: false
