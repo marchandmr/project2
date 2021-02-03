@@ -21,12 +21,6 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        child.hasMany(models.active_prizes, {
-            onDelete: "cascade"
-        });
-        child.hasMany(models.active_chores, {
-            onDelete: "cascade"
-        })
     };
 
     return child;

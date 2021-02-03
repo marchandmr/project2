@@ -9,4 +9,12 @@ module.exports = function(sequilize, DataTypes) {
             allowNull: false
         }
     });
+    prizes.associate = function (models) {
+        prizes.belongsTo(models.parent, {
+            foreignKey:
+            {allowNull: false}
+        });
+    };
+
+    return prizes;
 };
