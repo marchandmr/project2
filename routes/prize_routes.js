@@ -1,6 +1,10 @@
-var db = require("../models");
+var express = require("express");
+var router = express.Router();
+//var user = require("../models/burger.js");
 
+router.get("/prize", function (req, res) {
 
-module.exports = function(app){
+    res.render("prize");
+});
 
-}
+module.exports = router;
