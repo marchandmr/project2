@@ -1,10 +1,10 @@
-var db = require("../models");
+var express = require("express");
+var router = express.Router();
+//var user = require("../models/burger.js");
 
+router.get("/chores", function (req, res) {
 
-module.exports = function(app){
-app.get("/",function(req,res){
-    db.Chores.findAll({}).then(function(dbChores){
-        res.json(dbChores);
-    });
+    res.render("chores");
 });
-};
+
+module.exports = router;

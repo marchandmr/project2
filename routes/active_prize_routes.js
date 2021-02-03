@@ -1,9 +1,10 @@
-var db = require("../models");
+var express = require("express");
+var router = express.Router();
+//var user = require("../models/burger.js");
 
-module.exports = function(app){
-    app.get("/",function(req,res){
-        db.Prizes.findAll({}).then(function(dbPrizes){
-            res.json(dbPrizes);
-        });
-    });
-    };
+router.get("/activeprize", function (req, res) {
+
+    res.render("prize");
+});
+
+module.exports = router;
