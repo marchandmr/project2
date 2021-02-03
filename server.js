@@ -10,13 +10,19 @@ app.set("view engine", "handlebars");
 var routes = require("./routes/htmlroutes.js");
 app.use(routes);
 
-var routes = require("./routes/active_chores_routes.js")
+var routes = require("./routes/chores.js")
 app.use(routes);
 
-var routes = require("./routes/active_prize_routes.js")
+var routes = require("./routes/prizes.js")
 app.use(routes);
 
-var routes = require("./routes/prize_routes.js")
+var routes = require("./routes/parent.js")
+app.use(routes);
+
+var routes = require("./routes/kidUser.js")
+app.use(routes);
+
+var routes = require("./routes/redeemPrize.js")
 app.use(routes);
 
 app.listen(PORT, function () {
