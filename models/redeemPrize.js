@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var chorePrize = sequelize.define("chorePrize", {
+    var redeemPrize = sequelize.define("redeemPrize", {
         prizeName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,17 +10,17 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    chorePrize.associate = function (models) {
-        chorePrize.hasMany(models.active_prizes, {
+    redeemPrize.associate = function (models) {
+        redeemPrize.hasMany(models.active_prizes, {
             onDelete: "cascade"
         });
-        chorePrize.belongsTo(models.user, {
+        redeemPrize.belongsTo(models.user, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
 
-    return chorePrize;
+    return redeemPrize;
 };
    
