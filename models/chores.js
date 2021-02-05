@@ -16,11 +16,13 @@ module.exports = function (sequilize, DataTypes) {
     });
 
     chores.associate = function (models) {
-        chores.belongsTo(models.chores, {
+        chores.belongsTo(models.user, {
             foreignKey: {
                 allowNull: false
             }
         });
+
+       
     };
 
     return chores;
