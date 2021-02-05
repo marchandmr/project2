@@ -1,4 +1,4 @@
-module.exports = function(sequilize, DataTypes) {
+module.exports = function (sequilize, DataTypes) {
     var prizes = sequilize.define("prizes", {
         prizeName: {
             type: DataTypes.STRING,
@@ -10,9 +10,9 @@ module.exports = function(sequilize, DataTypes) {
         }
     });
     prizes.associate = function (models) {
-        prizes.belongsTo(models.prizes, {
+        prizes.belongsTo(models.user, {
             foreignKey:
-            {allowNull: false}
+                { allowNull: false }
         });
     };
 
