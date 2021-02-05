@@ -10,16 +10,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    redeemPrize.associate = function (models) {
-        redeemPrize.hasMany(models.active_prizes, {
-            onDelete: "cascade"
-        });
-        redeemPrize.belongsTo(models.user, {
+    
+        redeemPrize.belongsTo(models.parent, {
             foreignKey: {
                 allowNull: false
             }
         });
-    };
+   
 
     return redeemPrize;
 };

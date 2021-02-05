@@ -14,6 +14,6 @@ module.exports = function (sequilize, DataTypes) {
             allowNull: false
         }
     });
-    
+
     return user;
 };
