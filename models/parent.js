@@ -14,6 +14,9 @@ module.exports = function (sequilize, DataTypes) {
             allowNull: false
         }
     });
+<<<<<<< HEAD
+
+=======
     user.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);
     };
@@ -24,5 +27,6 @@ module.exports = function (sequilize, DataTypes) {
             null
         );
     });
+>>>>>>> 0c426b1d56190255e7bcab5f6c5dfc207749631b
     return user;
 };
