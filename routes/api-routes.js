@@ -1,4 +1,5 @@
 var db = require("../models");
+const { route } = require("./html-routes");
 var router = express.Router();
 
 //add chores 
@@ -7,7 +8,7 @@ router.post("/api/chores", function (req, res) {
     res.json(dbChores);
   });
 });
-app.put("/api/chores", function (req, res) {
+route.put("/api/chores", function (req, res) {
   db.chores.update(
     req.body,
     {
@@ -42,7 +43,7 @@ router.post("/api/chores", function (req, res) {
     });
 });
 
-app.put("/api/chores", function (req, res) {
+route.put("/api/chores", function (req, res) {
   db.chores.update(
     req.body,
     {
@@ -61,7 +62,7 @@ router.post("/api/child", function (req, res) {
     res.json(dbChild);
   });
 });
-app.put("/api/child", function (req, res) {
+route.put("/api/child", function (req, res) {
   db.child.update(
     req.body,
     {
@@ -78,7 +79,7 @@ router.post("/api/user", function (req, res) {
     res.json(dbUser);
   });
 });
-app.put("/api/user", function (req, res) {
+route.put("/api/user", function (req, res) {
   db.User.update(
     req.body,
     {
@@ -91,25 +92,42 @@ app.put("/api/user", function (req, res) {
 });
 
 
-//login acct
+//login acct***
 
-app.get("/api/child/:id", function(req, res) {
-  db.child.findOne({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbChild) {
-    res.json(dbChild);
-  });
+route.post("/api/login", passport.authenticate("local"), function(req, res) {
+  res.json(req.user);
 });
-app.get("/api/user/:id", function(req, res) {
-  db.user.findOne({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbUser) {
-    res.json(dbUser);
-  });
+
+route.post("/api/signup", function(req, res) {
+  db.User.create({
+    email: req.body.email,
+    password: req.body.password
+  })
+    .then(function() {
+      res.redirect(307, "/api/login");
+    })
+    .catch(function(err) {
+      res.status(401).json(err);
+    });
+});
+
+route.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/");
+});
+
+
+route.get("/api/user_data", function(req, res) {
+  if (!req.user) {
+   
+    res.json({});
+  } else {
+  
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+  }
 });
 
 //available chores
@@ -134,7 +152,7 @@ router.post("/api/chores", function (req, res) {
     });
 });
 
-app.put("/api/chores", function (req, res) {
+route.put("/api/chores", function (req, res) {
   db.chores.update(
     req.body,
     {
@@ -166,7 +184,7 @@ router.post("/api/chores", function (req, res) {
     });
 });
 
-app.put("/api/chores", function (req, res) {
+route.put("/api/chores", function (req, res) {
   db.chores.update(
     req.body,
     {
@@ -194,7 +212,7 @@ router.post("/api/prize", function (req, res) {
       res.json(dbPrize);
     });
 });
-app.put("/api/prize", function (req, res) {
+route.put("/api/prize", function (req, res) {
   db.Prize.update(
     req.body,
     {
@@ -227,7 +245,7 @@ router.post("/api/chores", function (req, res) {
     });
 });
 
-app.put("/api/chores", function (req, res) {
+route.put("/api/chores", function (req, res) {
   db.chores.update(
     req.body,
     {
