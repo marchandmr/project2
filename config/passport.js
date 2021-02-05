@@ -9,13 +9,13 @@ passport.use(new LocalStrategy(
   {
     usernameField: "email"
   },
-  function(email, password, done) {
-  
+  function (email, password, done) {
+
     db.User.findOne({
       where: {
         email: email
       }
-    }).then(function(dbUser) {
+    }).then(function (dbUser) {
       if (!dbUser) {
         return done(null, false, {
           message: "Incorrect email."
@@ -31,11 +31,11 @@ passport.use(new LocalStrategy(
   }
 ));
 
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
