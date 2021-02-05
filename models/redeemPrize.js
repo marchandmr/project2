@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     redeemPrize.associate = function (models) {
-        redeemPrize.hasMany(models.active_prizes, {
+        redeemPrize.hasMany(models.redeemPrize, {
             onDelete: "cascade"
         });
         redeemPrize.belongsTo(models.user, {
