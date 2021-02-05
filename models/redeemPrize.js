@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var redeemPrize = sequelize.define("redeemPrize", {
         prizeName: {
             type: DataTypes.STRING,
@@ -23,4 +23,3 @@ module.exports = function(sequelize, DataTypes) {
 
     return redeemPrize;
 };
-   
