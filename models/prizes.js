@@ -10,7 +10,7 @@ module.exports = function(sequilize, DataTypes) {
         }
     });
     prizes.associate = function (models) {
-        prizes.belongsTo(models.parent, {
+        prizes.belongsTo(models.prizes, {
             foreignKey:
             {allowNull: false}
         });

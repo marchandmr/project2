@@ -16,7 +16,7 @@ module.exports = function (sequilize, DataTypes) {
     });
 
     chores.associate = function (models) {
-        chores.belongsTo(models.parent, {
+        chores.belongsTo(models.chores, {
             foreignKey: {
                 allowNull: false
             }
