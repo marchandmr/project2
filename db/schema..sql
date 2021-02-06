@@ -1,4 +1,4 @@
-CREATE DATABASE happy_homes;
+CREATE DATABASE happy_home;
 
-USE happy_homes;
+USE happy_home;
 
