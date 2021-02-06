@@ -20,6 +20,12 @@ app.use(passport.session());
 
 
 
-app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(
+            "==> :earth_americas:  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+            PORT,
+            PORT
+        );
+    });
 });
