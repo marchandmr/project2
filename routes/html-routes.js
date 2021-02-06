@@ -1,37 +1,37 @@
 var express = require("express");
-var router = express.Router();
 
 
-router.get("/", function (req, res) {
 
-    //router.get("/login", function (req, res) {
+app.get("/", function (req, res) {
+
+    //app.get("/login", function (req, res) {
 
     res.render("login", {
         style: "login.css"
     });
 });
 
-router.get("/create", function (req, res) {
+app.get("/create", function (req, res) {
 
-    //router.get("/login", function (req, res) {
+    //app.get("/login", function (req, res) {
 
     res.render("createAcct", {
         style: "createAcct.css"
     });
 });
 
-router.get("/home", function (req, res) {
+app.get("/home", function (req, res) {
 
-    //router.get("/login", function (req, res) {
+    //app.get("/login", function (req, res) {
 
     res.render("home", {
         style: "home.css"
     });
 });
 
-router.get("/prize", function (req, res) {
+app.get("/prize", function (req, res) {
 
-    //router.get("/login", function (req, res) {
+    //app.get("/login", function (req, res) {
 
     res.render("prize", {
         style: "prize.css"
@@ -39,4 +39,4 @@ router.get("/prize", function (req, res) {
 });
 
 
-module.exports = router;
+module.exports = app;
