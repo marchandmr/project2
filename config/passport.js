@@ -11,7 +11,7 @@ passport.use(new LocalStrategy(
   },
   function (email, password, done) {
 
-    db.User.findOne({
+    db.user.findOne({
       where: {
         email: email
       }

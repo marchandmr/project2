@@ -16,12 +16,14 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
+    console.log(req.body);
+    db.user.create({
       email: req.body.email,
       password: req.body.password,
       familyName: req.body.familyName
     })
-      .then(() => {
+      .then((result) => {
+        console.log(result);
         res.redirect(307, "/api/login");
       })
       .catch(err => {
@@ -47,7 +49,7 @@ module.exports = function (app) {
   //routes to create new kid
   app.post("/api/user", function (req, res) {
     console.log(req.body.kid_name);
-    db.User.insertOne(req.body.kid_name).then(function (dbUser) {
+    db.user.insertOne(req.body.kid_name).then(function (dbUser) {
       res.json(dbUser);
     });
   });
@@ -59,7 +61,7 @@ module.exports = function (app) {
   });
   //routes to find a family user
   app.get("/api/user/:id", function (req, res) {
-    db.User.findOne({
+    db.user.findOne({
       where: {
         id: req.params.id
       }
