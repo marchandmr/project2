@@ -9,9 +9,10 @@ app.use(express.json());
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-var routes = require("./routes/html-routes.js");
-app.use(routes);
 const db = require("./models");
+
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
 
 // using passport to keep track of users login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
