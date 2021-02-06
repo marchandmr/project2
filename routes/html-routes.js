@@ -5,9 +5,13 @@ var router = express.Router();
 router.get("/", function (req, res) {
 
     //router.get("/login", function (req, res) {
+    if (req.user) {
+        res.render("/home");
+    }
 
     res.render("login", {
         style: "login.css"
+
     });
 });
 

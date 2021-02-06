@@ -9,9 +9,10 @@ app.use(express.json());
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-var routes = require("./routes/html-routes.js");
-app.use(routes);
 const db = require("./models");
+
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
 
 // using passport to keep track of users login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
@@ -23,11 +24,7 @@ app.use(passport.session());
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log(
-<<<<<<< HEAD
-            "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-=======
             "==> :earth_americas:  Listening on port %s. Visit http://localhost:%s/ in your browser.",
->>>>>>> ca0c878b39d437664bd5ea76e8550b2fdb7e771b
             PORT,
             PORT
         );
