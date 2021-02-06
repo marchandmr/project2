@@ -41,15 +41,15 @@ module.exports = function (app) {
 
   // routes to create a chore
   app.post("/api/chores", function (req, res) {
-    console.log(req.body.chore_Name);
-    db.Chores.insertOne(req.body.chore_Name).then(function (dbChores) {
+    console.log(req.body.taskName);
+    db.Chores.insertOne(req.body.taskName).then(function (dbChores) {
       res.json(dbChores);
     });
   });
   //routes to create new kid
   app.post("/api/user", function (req, res) {
-    console.log(req.body.kid_name);
-    db.user.insertOne(req.body.kid_name).then(function (dbUser) {
+    console.log(req.body.kidName);
+    db.user.insertOne(req.body.kidName).then(function (dbUser) {
       res.json(dbUser);
     });
   });

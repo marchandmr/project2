@@ -1,4 +1,7 @@
+const user = require("./user");
+
 module.exports = function (sequilize, DataTypes) {
+
     var kids = sequilize.define("kids", {
         kidName: {
             type: DataTypes.STRING,
@@ -17,4 +20,3 @@ module.exports = function (sequilize, DataTypes) {
         });
     };
     return kids;
-};
