@@ -1,109 +1,40 @@
 var db = require("../models");
 var router = express.Router();
 
-//add chores 
-router.post("/api/chores", function (req, res) {
-  db.chores.create(req.body).then(function (dbChores) {
+
+
+//routes to find all chores
+router.get("/api/chores", function(req, res) {
+  db.Chores.findAll({}).then(function(dbChores) {
     res.json(dbChores);
   });
 });
-app.put("/api/chores", function (req, res) {
-  db.chores.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
 
-
-//find all chores
-router.get("/api/chores", function (req, res) {
-  db.chores.findAll({})
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-
-//clam chores
-
-router.post("/api/chores", function (req, res) {
-  console.log(req.body);
-  db.chores.create({
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category
-  })
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-
-app.put("/api/chores", function (req, res) {
-  db.chores.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-
-
-//create acct 
-router.post("/api/child", function (req, res) {
-  db.child.create(req.body).then(function (dbChild) {
-    res.json(dbChild);
+// routes to create a chore
+router.post("/api/chores", function(req, res) {
+  console.log(req.body.chore_Name);
+  db.Chores.insertOne(req.body.chore_Name).then(function(dbChores) {
+    res.json(dbChores);
   });
 });
-app.put("/api/child", function (req, res) {
-  db.child.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChild) {
-      res.json(dbChild);
-    });
-});
 
-router.post("/api/user", function (req, res) {
-  db.User.create(req.body).then(function (dbUser) {
+//routes to create new kid
+router.post("/api/user", function(req, res) {
+  console.log(req.body.kid_name);
+  db.User.insertOne(req.body.kid_name).then(function(dbUser) {
     res.json(dbUser);
   });
 });
-app.put("/api/user", function (req, res) {
-  db.User.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbUser) {
-      res.json(dbUser);
-    });
-});
-
-
-//login acct
-
-app.get("/api/child/:id", function(req, res) {
-  db.child.findOne({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbChild) {
-    res.json(dbChild);
+//routes to find all kids
+router.get("/api/kids", function(req, res) {
+  db.Kids.findAll({}).then(function(dbKids) {
+    res.json(dbKids);
   });
 });
-app.get("/api/user/:id", function(req, res) {
-  db.user.findOne({
+
+//routes to find a family user
+router.get("/api/user/:id", function(req, res) {
+  db.User.findOne({
     where: {
       id: req.params.id
     }
@@ -112,129 +43,24 @@ app.get("/api/user/:id", function(req, res) {
   });
 });
 
-//available chores
-
-rrouter.get("/api/chores", function (req, res) {
-  db.chores.findAll({})
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-//clam chores
-
-router.post("/api/chores", function (req, res) {
-  console.log(req.body);
-  db.chores.create({
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category
-  })
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
+//route to claim a chore
+router.post('/chores/claim/:id', function (req, res) {
+  db.Chores.updateOne(req.params.id, function() {
+    res.redirect('/index');
+  });
 });
 
-app.put("/api/chores", function (req, res) {
-  db.chores.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-//display user
-
-router.post("/api/user", function (req, res) {
-  db.User.findAll({})
-    .then(function (dbUser) {
-      res.json(dbUser);
-    });
-});
-//clam 
-router.post("/api/chores", function (req, res) {
-  console.log(req.body);
-  db.chores.create({
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category
-  })
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
+//routes to find all prizes
+router.get("/api/prize", function(req, res) {
+  db.Prize.findAll({}).then(function(dbPrize) {
+    res.json(dbPrize);
+  });
 });
 
-app.put("/api/chores", function (req, res) {
-  db.chores.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-
-// login
-
-router.post("/api/posts", function (req, res) {
-  db.Post.findAll({})
-    .then(function (dbPost) {
-      res.json(dbPost);
-    });
-});
-
-//add prize 
-router.post("/api/prize", function (req, res) {
-  db.Prize.create(req.body)
-    .then(function (dbPrize) {
-      res.json(dbPrize);
-    });
-});
-app.put("/api/prize", function (req, res) {
-  db.Prize.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbPrize) {
-      res.json(dbPrize);
-    });
-});
-
-//available prize 
-
-router.get("/api/prize", function (req, res) {
-  db.Prize.findAll({})
-    .then(function (dbPrize) {
-      res.json(dbPrize);
-    });
-});
-//clam 
-router.post("/api/chores", function (req, res) {
-  console.log(req.body);
-  db.chores.create({
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category
-  })
-    .then(function (dbChores) {
-      res.json(dbChores);
-    });
-});
-
-app.put("/api/chores", function (req, res) {
-  db.chores.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbChores) {
-      res.json(dbChores);
-    });
+// routes to create a prize
+router.post("/api/prize", function(req, res) {
+  console.log(req.body.prize);
+  db.Chores.insertOne(req.body.prize).then(function(dbPrize) {
+    res.json(dbPrize);
+  });
 });
