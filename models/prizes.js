@@ -1,3 +1,5 @@
+const chores = require("./chores");
+
 module.exports = function (sequilize, DataTypes) {
     var prizes = sequilize.define("prizes", {
         prizeName: {
@@ -15,6 +17,7 @@ module.exports = function (sequilize, DataTypes) {
                 { allowNull: false }
         });
     };
+
 
     return prizes;
 };
