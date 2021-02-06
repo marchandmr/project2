@@ -1,19 +1,18 @@
 
 $(document).ready(() => {
     // Getting references to our form and inputs
-    const loginForm = $("submit");
+    const loginForm = $(".submit");
     const emailInput = $("input#email-input");
     const passwordInput = $("input#password-input");
 
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("click", event => {
-        console.log(emailInput);
         event.preventDefault();
         const userData = {
             email: emailInput.val().trim(),
             password: passwordInput.val().trim()
         };
-        console.log(email, password);
+        console.log(userData.email, userData.password);
         if (!userData.email || !userData.password) {
             return;
         }

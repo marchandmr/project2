@@ -6,42 +6,37 @@ router.get("/", function (req, res) {
 
     //router.get("/login", function (req, res) {
 
-    res.render("login");
+    res.render("login", {
+        style: "login.css"
+    });
 });
 
 router.get("/create", function (req, res) {
 
     //router.get("/login", function (req, res) {
 
-    res.render("createAcct");
+    res.render("createAcct", {
+        style: "createAcct.css"
+    });
 });
 
-router.get("/kid", function (req, res) {
+router.get("/home", function (req, res) {
 
     //router.get("/login", function (req, res) {
 
-    res.render("index");
-});
-
-router.get("/parent", function (req, res) {
-
-    //router.get("/login", function (req, res) {
-
-    res.render("parent");
+    res.render("home", {
+        style: "home.css"
+    });
 });
 
 router.get("/prize", function (req, res) {
 
     //router.get("/login", function (req, res) {
 
-    res.render("prize");
+    res.render("prize", {
+        style: "prize.css"
+    });
 });
 
-router.get("/chores", function (req, res) {
-
-    //router.get("/login", function (req, res) {
-
-    res.render("chores");
-});
 
 module.exports = router;

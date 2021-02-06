@@ -22,7 +22,7 @@ module.exports = function (sequilize, DataTypes) {
             }
         });
 
-       
+
     };
 
     return chores;
