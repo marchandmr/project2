@@ -1,5 +1,7 @@
+const user = require("./user");
+
 module.exports = function (sequilize, DataTypes) {
-   var kids = sequilize.define("chores", {
+   var kids = sequilize.define("kids", {
        kidName: {
            type: DataTypes.STRING,
            allowNull: false

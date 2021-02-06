@@ -28,12 +28,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-<<<<<<< HEAD
     user.associate = function (models) {
-=======
-
-    user.associate. = function (models) {
->>>>>>> 6d25715f8faf778a3d8c01220c3096a9fca1cb73
         user.hasMany(models.kids, {
             onDelete: "cascade"
         });
