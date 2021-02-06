@@ -1,0 +1,120 @@
+.display-4
+{
+    text-align: center;
+}
+
+
+.newChores
+{
+text-align: center;
+padding-top: 10px;
+}
+
+.newPrize
+{
+    text-align: center;
+padding-top: 10px;
+}
+
+.mainimage
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+     width: 40%;
+     padding-top: 10px;
+    
+}
+
+.userInfo
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+     width: 40%;
+     padding-bottom: 50px;
+     text-align: center;
+}
+
+#part2 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;     
+    background-color: #333; 
+    color:antiquewhite;
+}
+
+.col-sm
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+body{
+    width: 100%;
+}
+
+.form-group
+{
+    text-align: left;
+}
+.add
+{
+    text-align: left;
+}
+.addP
+{
+    text-align: right;
+}
+
+.prize
+{
+   
+   text-align: center;
+}
+
+.newChores{
+   
+    text-align: center;
+}
+
+.noMargin
+{
+    margin:0,! important;
+    margin-right: 0.25! important;
+    padding:0 ! important;
+
+}
+
+.choreName
+{
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+
+.login
+{
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+     text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+
+.card-img-top
+{
+     width: 40%;
+}
+
+.card
+{
+    width:50%;
+    height:50%;
+}

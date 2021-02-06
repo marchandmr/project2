@@ -1,4 +1,6 @@
 var express = require("express");
+var session = require("express-session");
+var passport = require("./config/passport");
 var PORT = process.env.PORT || 8080;
 var app = express();
 app.use(express.static("public"));
@@ -11,7 +13,13 @@ var routes = require("./routes/html-routes.js");
 app.use(routes);
 const db = require("./models");
 
+// using passport to keep track of users login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-    app.listen(PORT, function () {
-        console.log("App listening on PORT " + PORT);
-    });
+
+
+app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+});
