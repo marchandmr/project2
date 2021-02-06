@@ -34,7 +34,7 @@ module.exports = function (app) {
 
   //routes to find all chores
   app.get("/api/chores", function (req, res) {
-    db.Chores.findAll({}).then(function (dbChores) {
+    db.chores.findAll({}).then(function (dbChores) {
       res.json(dbChores);
     });
   });
@@ -42,20 +42,20 @@ module.exports = function (app) {
   // routes to create a chore
   app.post("/api/chores", function (req, res) {
     console.log(req.body.taskName);
-    db.Chores.insertOne(req.body.taskName).then(function (dbChores) {
+    db.chores.update(req.body.taskName).then(function (dbChores) {
       res.json(dbChores);
     });
   });
   //routes to create new kid
   app.post("/api/user", function (req, res) {
     console.log(req.body.kidName);
-    db.user.insertOne(req.body.kidName).then(function (dbUser) {
+    db.user.update(req.body.kidName).then(function (dbUser) {
       res.json(dbUser);
     });
   });
   //routes to find all kids
   app.get("/api/kids", function (req, res) {
-    db.Kids.findAll({}).then(function (dbKids) {
+    db.kids.findAll({}).then(function (dbKids) {
       res.json(dbKids);
     });
   });
@@ -71,27 +71,27 @@ module.exports = function (app) {
   });
   //route to claim a chore
   app.post('/chores/claim/:id', function (req, res) {
-    db.Chores.updateOne(req.params.id, function () {
+    db.chores.updateOne(req.params.id, function () {
       res.redirect('/index');
     });
   });
   //routes to find all prizes
   app.get("/api/prize", function (req, res) {
-    db.Prize.findAll({}).then(function (dbPrize) {
+    db.prize.findAll({}).then(function (dbPrize) {
       res.json(dbPrize);
     });
   });
   // routes to create a prize
   app.post("/api/prize", function (req, res) {
     console.log(req.body.prize);
-    db.Chores.insertOne(req.body.prize).then(function (dbPrize) {
+    db.chores.insertOne(req.body.prize).then(function (dbPrize) {
       res.json(dbPrize);
     });
   });
 
   //route to delete a chore
   app.delete("/api/chores/:id", function (req, res) {
-    db.Chores.destroy({
+    db.chores.destroy({
       where: {
         id: req.params.id
       }
@@ -102,7 +102,7 @@ module.exports = function (app) {
 
   //routes to complete a chore
   app.post('/chores/complete/:id', function (req, res) {
-    db.Chores.updateOne(req.params.id, function () {
+    db.chores.updateOne(req.params.id, function () {
       res.redirect('/index');
     });
   });
