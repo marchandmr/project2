@@ -11,7 +11,7 @@ module.exports = function (app) {
 
         //router.get("/login", function (req, res) {
         if (req.user) {
-            res.render("/home");
+            res.render("home");
         }
 
         res.render("login", {
@@ -29,13 +29,14 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/home", function (req, res) {
+    app.get("/home", isAuthenticated, (req, res) => {
         //router.get("/login", function (req, res) {
-
         res.render("home", {
             style: "home.css"
         });
     });
+
+
 
     app.get("/prize", function (req, res) {
 
