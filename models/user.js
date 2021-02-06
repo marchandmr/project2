@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 module.exports = function (sequelize, DataTypes) {
 
     var user = sequelize.define("user", {
@@ -17,13 +18,13 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        kidsName: {
+        kids: {
             type: DataTypes.STRING,
             allowNull: true
         },
         kidsPoints: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            allowNull: true
         }
     });
 
