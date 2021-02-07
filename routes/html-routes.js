@@ -30,10 +30,13 @@ module.exports = function (app) {
     });
 
     app.get("/home", isAuthenticated, (req, res) => {
-
-
+        let kidsString = req.user.kid;
+        console.log(kidsString);
+        let kidsObject = JSON.parse(kidsString);
+        console.log(kidsObject);
         res.render("home", {
-            style: "home.css"
+            style: "home.css",
+            user: req.user
         });
 
 
