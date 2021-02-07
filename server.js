@@ -27,7 +27,7 @@ require("./routes/html-routes")(app);
 
 
 
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.log(
             "==> :earth_americas:  Listening on port %s. Visit http://localhost:%s/ in your browser.",

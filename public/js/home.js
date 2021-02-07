@@ -13,6 +13,7 @@ var titleInput = $("#title");
 //add prize elements
 var addPrizeButton = $(".addPrize");
 var addPrizeInput = $("input#prize-input");
+var addPrizeValue = $("input#prize-value");
 
 //delete prize button
 var deletePrize = $(".deletePrize");
@@ -33,14 +34,34 @@ $(function () {
         var newKid = {
             name: addChildInput.val().trim(),
         };
-        console.log(newKid.name);
         // Send the POST request.
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newKid
+        $.post("/api/kids", {
+            name: newKid.name
         }).then(
             function () {
                 console.log("added child!");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+    //post request to add a new prize
+    addPrizeButton.on("click", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+
+        var newPrize = {
+            name: addPrizeInput.val().trim(),
+            value: addPrizeValue.val().trim(),
+        };
+        console.log(newPrize.name);
+        // Send the POST request.
+        $.post("/api/prizes", {
+            name: newPrize.name,
+            value: newPrize.value
+        }).then(
+            function () {
+                console.log("added Prize!");
                 // Reload the page to get the updated list
                 location.reload();
             }
@@ -77,26 +98,5 @@ $(function () {
     }
     cmsForm.on("submit", handleFormSubmit());
 
-    //post request to add a new prize
-    addPrizeButton.on("click", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        var newPrize = {
-            name: addPrizeInput.val().trim(),
-        };
-
-        // Send the POST request.
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newPrize
-        }).then(
-            function () {
-                console.log("added Prize!");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
 });
 

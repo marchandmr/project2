@@ -60,10 +60,11 @@
                     <h4 class="userName">Family Name</h4>
                 </div>
             </div>
+            {{#each kids}}
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="./img/avatar.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Kid user</h5>
+                    <h5 class="card-title">{{kids.name}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">POINTS: 50</li>
@@ -71,12 +72,16 @@
                             data-id=1>complete</button><button class="deny" data-id=1>delete</button></li>
                 </ul>
             </div>
+            {{/each}}
         </div>
         <div class="col-sm">
             <h2 class="newPrize">Add Prize</h2>
             <form class="login">
                 <div class="form-group">
                     <input type="text" class="form-control" id="prize-input" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="prize-value" placeholder="Name">
                 </div>
                 <button class="addPrize">Add</button>
             </form>

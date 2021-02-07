@@ -9,14 +9,16 @@ module.exports = function (sequilize, DataTypes) {
         },
         kidPoints: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            defaultValue: 0
         }
     });
     kids.associate = function (models) {
         kids.belongsTo(models.user, {
             foreignKey: {
+                defaultValue: 2,
                 allowNull: false
             }
         });
     };
     return kids;
+}
