@@ -30,10 +30,14 @@ module.exports = function (app) {
     });
 
     app.get("/home", isAuthenticated, (req, res) => {
+        db.kids.findAll({ raw: true }).then(function (dbKids) {
+            var kids = { kids: dbKids }
+            res.render("home", kids, {
+                style: "home.css"
+            });
+
+        })
         //router.get("/login", function (req, res) {
-        res.render("home", {
-            style: "home.css"
-        });
     });
 
 

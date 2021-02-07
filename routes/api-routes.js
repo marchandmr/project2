@@ -31,26 +31,40 @@ module.exports = function (app) {
       });
   });
 
+  // routes to create a prize
+  app.post("/api/prizes", (req, res) => {
+    console.log(req.body.prize);
+    db.prizes.create({
+      prizeName: req.body.name,
+      pointValue: req.body.value,
 
-  //routes to find all chores
-  app.get("/api/chores", function (req, res) {
-    db.chores.findAll({}).then(function (dbChores) {
-      res.json(dbChores);
+    }
+    ).then((dbPrize) => {
+      res.json(dbPrize);
     });
   });
+
+  //routes to find all chores
+  // app.get("/api/chores", function (req, res) {
+  //   db.chores.findAll({}).then(function (dbChores) {
+  //     res.json(dbChores);
+  //   });
+  // });
 
   // routes to create a chore
   app.post("/api/chores", function (req, res) {
     console.log(req.body.taskName);
-    db.chores.update(req.body.taskName).then(function (dbChores) {
+    db.chores.create(req.body.taskName).then(function (dbChores) {
       res.json(dbChores);
     });
   });
   //routes to create new kid
-  app.post("/api/user", function (req, res) {
+  app.post("/api/kids", function (req, res) {
     console.log(req.body.kidName);
-    db.user.update(req.body.kidName).then(function (dbUser) {
-      res.json(dbUser);
+    db.kids.create({
+      kidName: req.body.name
+    }).then(function (dbKids) {
+      res.json(dbKids);
     });
   });
   //routes to find all kids
@@ -69,22 +83,11 @@ module.exports = function (app) {
       res.json(dbUser);
     });
   });
-  //route to claim a chore
-  app.post('/chores/claim/:id', function (req, res) {
-    db.chores.updateOne(req.params.id, function () {
-      res.redirect('/index');
-    });
-  });
+
+
   //routes to find all prizes
   app.get("/api/prize", function (req, res) {
     db.prize.findAll({}).then(function (dbPrize) {
-      res.json(dbPrize);
-    });
-  });
-  // routes to create a prize
-  app.post("/api/prize", function (req, res) {
-    console.log(req.body.prize);
-    db.chores.insertOne(req.body.prize).then(function (dbPrize) {
       res.json(dbPrize);
     });
   });
