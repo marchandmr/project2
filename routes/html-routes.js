@@ -31,10 +31,9 @@ module.exports = function (app) {
 
     app.get("/home", isAuthenticated, (req, res) => {
         db.kids.findAll({ raw: true }).then(function (dbKids) {
-            var kids = { kids: dbKids }
+
 
             var familyName = req.user.familyName
-            console.log(familyName);
             res.render("home", { style: "home.css", kids: dbKids, family: familyName });
 
         })

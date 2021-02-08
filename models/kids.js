@@ -7,15 +7,16 @@ module.exports = function (sequilize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        kidPoints: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
+        kidTasks: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: "No current tasks"
         }
     });
     kids.associate = function (models) {
         kids.belongsTo(models.user, {
             foreignKey: {
-                defaultValue: 2,
+                defaultValue: 1,
                 allowNull: false
             }
         });
