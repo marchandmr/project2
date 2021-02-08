@@ -30,14 +30,18 @@ module.exports = function (app) {
     });
 
     app.get("/home", isAuthenticated, (req, res) => {
-        let kidsString = req.user.kid;
-        console.log(kidsString);
-        let kidsObject = JSON.parse(kidsString);
-        console.log(kidsObject);
-        res.render("home", {
-            style: "home.css",
-            user: req.user
-        });
+        db.kids.findAll({ raw: true }).then(function (dbKids) {
+            var kids = { kids: dbKids }
+
+            var familyName = req.user.familyName
+            console.log(familyName);
+            res.render("home", { style: "home.css", kids: dbKids, family: familyName });
+
+        })
+        // let kidsString = req.user.kid;
+        // console.log(kidsString);
+        // let kidsObject = JSON.parse(kidsString);
+        // console.log(kidsObject);
 
 
         //router.get("/login", function (req, res) {
