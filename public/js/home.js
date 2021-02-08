@@ -42,8 +42,9 @@ $(function () {
             kid: kidInput.val().trim(),
             task: taskInput.val().trim()
         };
-        console.log(newTask);
-        $.post("/api/kids/task", {
+
+        $.ajax("/api/kids", {
+            type: "PUT",
             kid: newTask.kid,
             task: newTask.task
         })

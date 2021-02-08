@@ -50,16 +50,16 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/kids/task", function (req, res) {
+  app.put("/api/kids", function (req, res) {
     db.kids.update(
       {
         kidTasks: req.body.task,
-        where: { kidName: kid }
+        where: { kidName: req.body.kid }
       })
       .then(function (dbTask) {
         res.json(dbTask)
-        console.log(dbTask);
       });
+    console.log(dbTask.kid);
   });
 
 
