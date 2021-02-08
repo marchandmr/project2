@@ -31,66 +31,37 @@ module.exports = function (app) {
       });
   });
 
-  // routes to create a prize
-  app.post("/api/prizes", (req, res) => {
-    console.log(req.body.prize);
-    db.prizes.create({
-      prizeName: req.body.name,
-      pointValue: req.body.value,
 
-    }
-    ).then((dbPrize) => {
-      res.json(dbPrize);
-    });
-  });
 
-  //routes to find all chores
-  // app.get("/api/chores", function (req, res) {
-  //   db.chores.findAll({}).then(function (dbChores) {
-  //     res.json(dbChores);
-  //   });
-  // });
-
-  // routes to create a chore
-  app.post("/api/chores", function (req, res) {
-    console.log(req.body.taskName);
-    db.chores.create(req.body.taskName).then(function (dbChores) {
-      res.json(dbChores);
-    });
-  });
   //routes to create new kid
   app.post("/api/kids", function (req, res) {
-    console.log(req.body.kidName);
     db.kids.create({
       kidName: req.body.name
     }).then(function (dbKids) {
       res.json(dbKids);
+      console.log(dbKids.kidName + " was added!");
     });
   });
+
   //routes to find all kids
   app.get("/api/kids", function (req, res) {
     db.kids.findAll({}).then(function (dbKids) {
       res.json(dbKids);
     });
   });
-  //routes to find a family user
-  app.get("/api/user/:id", function (req, res) {
-    db.user.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbUser) {
-      res.json(dbUser);
-    });
+
+  app.post("/api/kids/task", function (req, res) {
+    db.kids.update(
+      {
+        kidTasks: req.body.task,
+        where: { kidName: kid }
+      })
+      .then(function (dbTask) {
+        res.json(dbTask)
+        console.log(dbTask);
+      });
   });
 
-
-  //routes to find all prizes
-  app.get("/api/prize", function (req, res) {
-    db.prize.findAll({}).then(function (dbPrize) {
-      res.json(dbPrize);
-    });
-  });
 
   //route to delete a chore
   app.delete("/api/chores/:id", function (req, res) {
@@ -102,11 +73,4 @@ module.exports = function (app) {
       res.json(dbChores);
     });
   });
-
-  //routes to complete a chore
-  app.post('/chores/complete/:id', function (req, res) {
-    db.chores.updateOne(req.params.id, function () {
-      res.redirect('/index');
-    });
-  });
-};
+}
