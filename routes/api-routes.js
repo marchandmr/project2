@@ -51,15 +51,18 @@ module.exports = function (app) {
   });
 
   app.put("/api/kids", function (req, res) {
+    console.log(JSON.stringify(req.body.kid))
+    console.log(JSON.stringify(req.body.task))
     db.kids.update(
       {
-        kidTasks: req.body.task,
-        where: { kidName: req.body.kid }
-      })
+        kidTasks: req.body.task
+
+      },
+      { where: { kidName: req.body.kid } })
       .then(function (dbTask) {
         res.json(dbTask)
       });
-    console.log(dbTask.kid);
+
   });
 
 

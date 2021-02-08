@@ -35,7 +35,7 @@ module.exports = function (app) {
 
             var familyName = req.user.familyName
             res.render("home", { style: "home.css", kids: dbKids, family: familyName });
-
+            console.log(dbKids);
         })
         // let kidsString = req.user.kid;
         // console.log(kidsString);
