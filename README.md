@@ -14,6 +14,8 @@
   * [Credits](#credits)
   * [License](#license)
 
+   Live website : https://polar-lake-20379.herokuapp.com/
+
   ## Installation
 
   npm install
@@ -24,7 +26,9 @@
 
   ## Credits
 
-  matthew Marchand - front end, back end, express, javascript, html Luis Vela - front end design / css  Zach Taylor - database, mysql, sequelize models
+  matthew Marchand - front end, back end, express, javascript, html, live deployment
+  Luis Vela - front end design / css  
+  Zach Taylor - database, mysql, sequelize models
 
   ## Test
 
