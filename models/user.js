@@ -17,19 +17,11 @@ module.exports = function (sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        kid: {
-            type: DataTypes.STRING,
-            defaultValue: '[{name: "ted"},{name: "bill"}]'
         }
     });
 
 
-    // user.associate = function (models) {
-    //     user.hasMany(models.kids, {
-    //         onDelete: "cascade"
-    //     });
-    // };
+
 
 
 
