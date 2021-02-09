@@ -67,13 +67,14 @@ module.exports = function (app) {
 
 
   //route to delete a chore
-  app.delete("/api/chores/:id", function (req, res) {
-    db.chores.destroy({
+  app.delete("/api/kids/:id", function (req, res) {
+    console.log(req.params.id);
+    db.kids.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbChores) {
-      res.json(dbChores);
+    }).then(function (dbTask) {
+      res.json(dbTask)
     });
   });
 }
