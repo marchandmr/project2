@@ -42,11 +42,19 @@ $(function () {
             kid: kidInput.val().trim(),
             task: taskInput.val().trim()
         };
+        console.log(newTask);
+        // $.ajax({
+        //     type: "PUT",
+        //     url: "/api/kids",
+        //     contentType: "application/json",
+        //     data: JSON.stringify(newTask), // access in body
 
-        $.ajax("/api/kids", {
-            type: "PUT",
-            kid: newTask.kid,
-            task: newTask.task
+
+        // })
+        $.ajax({
+            url: "/api/kids",
+            method: "PUT",
+            data: newTask
         })
             .then(
                 function () {
