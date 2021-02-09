@@ -12,6 +12,9 @@ var kidInput = $("#title");
 //buttons for completing / deleting kids assigned chores
 var completeChore = $(".complete");
 var deleteChore = $(".delete");
+////////
+var logOut = $(".nav-link");
+var remove = $(".complete");
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -43,14 +46,7 @@ $(function () {
             task: taskInput.val().trim()
         };
         console.log(newTask);
-        // $.ajax({
-        //     type: "PUT",
-        //     url: "/api/kids",
-        //     contentType: "application/json",
-        //     data: JSON.stringify(newTask), // access in body
 
-
-        // })
         $.ajax({
             url: "/api/kids",
             method: "PUT",
@@ -62,7 +58,20 @@ $(function () {
                 }
             );
     });
-
+    remove.on("click", function (event) {
+        event.preventDefault();
+        var id = this.id;
+        console.log(id);
+        $.ajax("/api/kids/" + id, {
+            type: "DELETE",
+            data: id
+        })
+            .then(
+                function () {
+                    location.reload("/home");
+                }
+            );
+    });
 });
 
 
