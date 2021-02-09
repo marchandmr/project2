@@ -1,8 +1,69 @@
+body{
+    background-image: url(http://www.neatlings.com/uploads/4/5/1/2/45121665/editor/kids-cleaning-living-room.jpg?1526318032);
+    background-repeat: inherit;
+    background-size: cover;
+}
 .display-4
 {
     text-align: center;
+    font-family: 'Hachi Maru Pop', cursive;
+    font-weight: bolder;
+    
 }
-
+.addChild{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.form-control{
+    border-radius: 5px;
+}
+.custom-select{
+    background-color:#2692FF; 
+    color: white;
+    border-radius: 5px;
+}
+.complete{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.deny{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.addPrize{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.submit{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.deletePrize{
+    background-color:#2692FF;
+    color: white;
+    border-radius: 5px;
+}
+.col-sm{
+    background-color: #f0ead6;
+    border-radius: 10px;
+    margin: 20px;
+    resize: inherit;
+    box-shadow:5px 10px 8px black;
+    font-family: 'Courgette', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-family: 'Sigmar One', cursive;
+}
+.nav-item{
+    font-size: 25px;
+    font-family: 'Hachi Maru Pop', cursive;
+    font-weight:bolder;
+}
 
 .newChores
 {
@@ -37,11 +98,15 @@ padding-top: 10px;
 }
 
 #part2 {
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 2.5rem;     
-    background-color: #333; 
-    color:antiquewhite;
+    font-size: 20px;
+    color:black;
+    font-family: 'Courgette', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Sigmar One', cursive; 
 }
 
 .col-sm
@@ -114,15 +179,10 @@ h4{
 
 .card
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-     text-align: center;
-   
-}
-body{
-    background-color: azure;
+    width:50%;
+    text-align: center;
+    align-items: center;
+    margin-left: 40px;
+    box-shadow:5px 10px 8px black;
 }
 

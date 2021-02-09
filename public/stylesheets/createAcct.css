@@ -9,7 +9,9 @@
   
 }
 body{
-    background-color: #F45B69;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/370/123/non_2x/girl-and-maid-cleaning-the-house-vector.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -22,9 +24,17 @@ body{
     text-align: center;
     border-radius: 25px;
     margin-top: 150px;
+    box-shadow:5px 10px 8px black;
+    font-family: 'Courgette', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-family: 'Sigmar One', cursive;
   }
   .form input {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Courgette', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-family: 'Sigmar One', cursive;
     outline: 0;
     background: #f2f2f2;
     width: 100%;
@@ -35,10 +45,13 @@ body{
     font-size: 14px;
   }
   .form button {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Courgette', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-family: 'Sigmar One', cursive;
     text-transform: uppercase;
     outline: 0;
-    background: #F45B69;
+    background: #2692FF;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -47,6 +60,7 @@ body{
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    border-radius: 5px;
   }
 
   h4{
