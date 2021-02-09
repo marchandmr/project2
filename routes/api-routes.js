@@ -77,4 +77,8 @@ module.exports = function (app) {
       res.json(dbTask)
     });
   });
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
 }
