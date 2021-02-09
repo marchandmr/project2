@@ -9,22 +9,17 @@ var cmsForm = $(".submit");
 var taskInput = $("#body");
 var kidInput = $("#title");
 
-//buttons for completing / deleting kids assigned chores
-var completeChore = $(".complete");
-var deleteChore = $(".delete");
-////////
+
+// buttons used to logout, or remove a kid from the database
 var logOut = $(".nav-link");
 var remove = $(".complete");
 
 /////////////////////////////////////////////////////////////////////////
 
 $(function () {
-    // post request too a new child
-
+    // post request to a new child
     addChildButton.on("click", function (event) {
-        // Make sure to preventDefault on a submit event.
         event.preventDefault();
-
         var newKid = {
             name: addChildInput.val().trim(),
         };
@@ -33,12 +28,13 @@ $(function () {
             name: newKid.name
         }).then(
             function () {
-
                 // Reload the page to get the updated list
                 location.reload();
             }
         );
     });
+
+    // javascript used for adding a new task
     cmsForm.on("click", function (event) {
         event.preventDefault();
         var newTask = {
@@ -58,6 +54,8 @@ $(function () {
                 }
             );
     });
+
+    //javascript for deleting a kid from the database
     remove.on("click", function (event) {
         event.preventDefault();
         var id = this.id;
@@ -74,7 +72,7 @@ $(function () {
     });
 });
 
-
+// javascript for logging out
 logOut.on("click", function (event) {
     event.preventDefault();
     window.location.href = "/logout";

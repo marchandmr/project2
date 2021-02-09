@@ -1,20 +1,17 @@
 var db = require("../models");
 var passport = require("../config/passport");
-
+const consoleTextBox = require("console-text-box");
 
 module.exports = function (app) {
-
+  //route for lgging in a user
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
-    // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
       id: req.user.id
     });
   });
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+  // Route for signing up a user.
   app.post("/api/signup", (req, res) => {
     console.log(req.body);
     db.user.create({
@@ -39,7 +36,7 @@ module.exports = function (app) {
       kidName: req.body.name
     }).then(function (dbKids) {
       res.json(dbKids);
-      console.log(dbKids.kidName + " was added!");
+      consoleTextBox(dbKids.kidName + " was added!");
     });
   });
 
@@ -50,9 +47,9 @@ module.exports = function (app) {
     });
   });
 
+  // route to update the current tasks
   app.put("/api/kids", function (req, res) {
-    console.log(JSON.stringify(req.body.kid))
-    console.log(JSON.stringify(req.body.task))
+    consoleTextBox(req.body.kid, req.body.task)
     db.kids.update(
       {
         kidTasks: req.body.task
@@ -66,7 +63,7 @@ module.exports = function (app) {
   });
 
 
-  //route to delete a chore
+  //route to delete a child from database
   app.delete("/api/kids/:id", function (req, res) {
     console.log(req.params.id);
     db.kids.destroy({
@@ -75,8 +72,11 @@ module.exports = function (app) {
       }
     }).then(function (dbTask) {
       res.json(dbTask)
+      consoleTextBox("Succesfully removed")
     });
   });
+
+  //logout route
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
